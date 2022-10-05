@@ -6,16 +6,32 @@
     </head>
     <body>
         <div id="shopping-list">
-            <h1 id="header">{{ header }}</h1>
-            <input type="text" v-model="header">
+            <h1>{{ header }}</h1>
+            <div id="header"> 
+                <div>
+                    <input class="input" type="text" v-model="newItem">
+                    <button class="button-1" role="button">Add Item</button>
+                </div>
+                <ul class="otis header-li">
+                    <li v-for="item in items">{{ item }}</li>
+                </ul>
+
+            </div>
+            
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
         <script>
             console.log("Hello World!");
-            new Vue({
+            var shoppingList = new Vue({
                 el: '#shopping-list',
                 data: {
-                    header: 'Hello Vue!'
+                    header: 'Shopping List App',
+                    newItem: '',
+                    items: [
+                        '10 Apples',
+                        '20 Oranges',
+                        '30 Bananas',
+                    ]
                 }
             })
         </script>
