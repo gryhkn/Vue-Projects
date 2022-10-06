@@ -10,7 +10,7 @@
             <div id="header"> 
                 <div>
                     <input class="input" type="text" v-model="newItem">
-                    <button class="button-1" role="button">Add Item</button>
+                    <button class="button-1" role="button" v-on:click="items.push(newItem)">Add Item</button>
                 </div>
                 <ul class="otis header-li">
                     <li v-for="item in items">{{ item }}</li>
