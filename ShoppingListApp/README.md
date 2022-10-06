@@ -1,0 +1,1 @@
+![](https://github.com/gryhkn/Vue-Projects/blob/4a9188d0d146d3a1f30c2280a901c9b95e0a55d7/ShoppingListApp/shoppingList.png)
