@@ -9,8 +9,8 @@
             <h1>{{ header }}</h1>
             <div id="header"> 
                 <div>
-                    <input class="input" type="text" v-model="newItem">
-                    <button class="button-1" role="button" v-on:click="items.push(newItem)">Add Item</button>
+                    <input class="input" type="text" placeholder="Add an item" v-model="newItem" @keyup.enter="addItem">
+                    <button class="button-1" role="button" v-bind:disabled="newItem.length === 0" @click="addItem">Add Item</button>
                 </div>
                 <ul class="otis header-li">
                     <li v-for="item in items">{{ item }}</li>
@@ -32,7 +32,13 @@
                         '20 Oranges',
                         '30 Bananas',
                     ]
-                }
+                },
+                methods: {
+                    addItem: function() {
+                        this.items.push(this.newItem);
+                        this.newItem = '';
+                    }
+                    }
             })
         </script>
     </body>
