@@ -1,13 +1,14 @@
 <template>
     <p>
         <strong> {{ name }}</strong>
-        {{ price }}
+        {{ pricePretty }}
         <button @click="addToCart">Add to Cart</button>
     </p>
 
 </template>
 
 <script>
+import { computed } from "vue";
 export default {
     props: {
         name: String,
@@ -16,7 +17,8 @@ export default {
 
     setup(props, { emit }) {
         const addToCart = () => emit("addToCart", props.name);
-        return { addToCart };
+        const pricePretty = computed(() => `$${props.price.toFixed(2)}`);
+        return { addToCart, pricePretty };
         },
     }; 
 

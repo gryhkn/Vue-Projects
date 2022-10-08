@@ -9,7 +9,7 @@
 
 <script>
 import YummyMealVue from './components/YummyMeal.vue';
-import { ref } from "vue"
+import { ref, reactive, watch } from "vue"
 export default {
 
   components: {
@@ -18,11 +18,13 @@ export default {
 
   setup() {
     const name = ref("The Snazzy Burger");
-
+    const meal = reactive({ name: "Pizza 🍕", price: 5});
     const placeOrder = () => { alert("Your order has been places")}
     const addItemToCart = (item) => alert(`One ${item} added to the cart!`);
 
-    return { name, placeOrder, addItemToCart };
+    watch(name, (newName, oldName) => console.log(newName, oldName));
+
+    return { name, placeOrder, addItemToCart, meal };
   },
 
 
