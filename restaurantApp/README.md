@@ -1,6 +1,10 @@
-# Vue 3 + Vite
+# Restaurant app using Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+In this project I created a restaurant menu with a few choice and its prices.
+
+### Here is the screenshot of the application:
+
+![](https://github.com/gryhkn/Vue-Projects/blob/b4935929454ec061a438ee70d514be782139a6ff/restaurantApp/restaurantApp.png)
 
 ## Recommended IDE Setup
 
