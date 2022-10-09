@@ -16,39 +16,31 @@
   />
 </template>
 
-<script>
+<script setup>
 import YummyMeal from "./components/YummyMeal.vue";
 import { ref, reactive, watch, provide } from "vue";
 
-export default {
-  components: { YummyMeal },
+const currencySymbol = ref("₺");
+provide("currencySymbol", currencySymbol);
+const name = ref("The McBurgerDonald's ");
+const cart = reactive([]);
+const meal = reactive({ name: "Pizza 🍕", price: 5 });
+const meals = reactive([
+  { name: " Pizza  🍕 ", price: 5 },
+  { name: " Hamburger  🍔 ", price: 5 },
+  { name: " Cheeseburger  🧀 ", price: 8 },
+  { name: " Fries  🍟 ", price: 3 },
+]);
 
-  setup() {
-    const currencySymbol = ref("₺");
-    provide("currencySymbol", currencySymbol);
-    const name = ref("The McBurgerDonald's ");
-    const cart = reactive([]);
-    const meal = reactive({ name: "Pizza 🍕", price: 5 });
-    const meals = reactive([
-      { name: " Pizza  🍕 ", price: 5 },
-      { name: " Hamburger  🍔 ", price: 5 },
-      { name: " Cheeseburger  🧀 ", price: 8 },
-      { name: " Fries  🍟 ", price: 3 },
-    ]);
-
-    const placeOrder = () => {
-      alert("Your order has been places");
-    };
-    const addItemToCart = (item) => cart.push(item);
-
-    watch(
-      () => [...cart],
-      (newName, oldName) => console.log(newName, oldName)
-    );
-
-    return { name, placeOrder, addItemToCart, meals, currencySymbol };
-  },
+const placeOrder = () => {
+  alert("Your order has been places");
 };
+const addItemToCart = (item) => cart.push(item);
+
+watch(
+  () => [...cart],
+  (newName, oldName) => console.log(newName, oldName)
+);
 </script>
 
 <style scoped>
