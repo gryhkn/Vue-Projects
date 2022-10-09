@@ -1,38 +1,42 @@
 <template>
-  <h1> {{name}} </h1>
-  <input type="text" v-model="name">
+  <h1>{{ name }}</h1>
+  <input type="text" v-model="name" />
   <button @click="placeOrder">Place Order</button>
-  <YummyMealVue name="Pizza 🍕" :price="10" @addToCart="addItemToCart"/>
+  <YummyMeal
+    v-for="meal in meals"
+    :name="meal.name"
+    :price="meal.price"
+    @addToCart="addItemToCart"
+  />
 </template>
 
-
-
 <script>
-import YummyMealVue from './components/YummyMeal.vue';
-import { ref, reactive, watch } from "vue"
-export default {
+import YummyMeal from "./components/YummyMeal.vue";
+import { ref, reactive, watch } from "vue";
 
-  components: {
-    YummyMealVue
-  },
+export default {
+  components: { YummyMeal },
 
   setup() {
     const name = ref("The Snazzy Burger");
-    const meal = reactive({ name: "Pizza 🍕", price: 5});
-    const placeOrder = () => { alert("Your order has been places")}
+    const meal = reactive({ name: "Pizza 🍕", price: 5 });
+    const meals = reactive([
+      { name: "Pizza 🍕", price: 5 },
+      { name: "Hamburger 🍔", price: 5 },
+      { name: "Cheeseburger 🧀", price: 8 },
+      { name: "Fries", price: 3 },
+    ]);
+    const placeOrder = () => {
+      alert("Your order has been places");
+    };
     const addItemToCart = (item) => alert(`One ${item} added to the cart!`);
 
     watch(name, (newName, oldName) => console.log(newName, oldName));
 
-    return { name, placeOrder, addItemToCart, meal };
+    return { name, placeOrder, addItemToCart, meal, meals };
   },
-
-
-}
- 
+};
 </script>
-
-
 
 <style scoped>
 .logo {
