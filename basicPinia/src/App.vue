@@ -1,23 +1,20 @@
 <template>
-  <header class="navbar">
-    <div>
-      <nav>
-        <RouterLink to="/">Posts</RouterLink>
-        <RouterLink to="/authors">Authors</RouterLink>
-      </nav>
-    </div>
-  </header>
+  <div>
+    <header class="bg-green-800 p-4">
+      <div>
+        <nav>
+          <RouterLink to="/posts">Posts</RouterLink>
+          <RouterLink to="/authors"> Authors</RouterLink>
+        </nav>
+      </div>
+    </header>
 
-  <RouterView></RouterView>
+    <PostsView />
+  </div>
 </template>
 
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+import HomeView from "./views/HomeView.vue";
+import PostsView from "./views/PostsView.vue";
 </script>
-
-<style>
-.navbar {
-  background-color: ligthgreen;
-  padding: 1.2rem;
-}
-</style>

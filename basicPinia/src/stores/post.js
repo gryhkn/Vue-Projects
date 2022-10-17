@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import axios from "axios";
 
 export const usePostStore = defineStore({
   id: "post",
@@ -21,9 +22,12 @@ export const usePostStore = defineStore({
       this.posts = [];
       this.loading = true;
       try {
-        this.posts = await fetch(
-          "https://jsonplaceholder.typicode.com/posts"
-        ).then((response) => response.json());
+        this.posts = await axios
+          .get("https://jsonplaceholder.typicode.com/posts")
+          .then((response) => {
+            response.json();
+            console.log(response.data);
+          });
       } catch (error) {
         this.error = error;
       } finally {
@@ -35,7 +39,9 @@ export const usePostStore = defineStore({
       this.post = null;
       this.loading = true;
       try {
-        this.post = fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+        this.post = axios.get(
+          `https://jsonplaceholder.typicode.com/posts/${id}`
+        );
       } catch (error) {
         this.error = error;
       } finally {
